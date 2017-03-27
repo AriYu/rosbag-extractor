@@ -6,6 +6,7 @@ function modified_rosbag_extractor(bag_file_path)
     for idx = 1:numel(topic_names)
         topic_map(topic_names{idx}) = timeseries(select(bag, 'Topic', topic_names{idx}));
     end
+    save(strcat(bag_file_path,'_v2.mat'))
     for i = 8:13
         figure
         plot(topic_map('/imu/data_raw').Time, topic_map('/imu/data_raw').Data(:, i));
